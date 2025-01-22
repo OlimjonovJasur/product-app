@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2><a href="{% url 'categories' %}">Products for {{ category.name }}</a></h2>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Created at</th>
+  </tr>
+    {% for product in products %}
+  <tr>
+    <td>{{ product.id }}</td>
+    <td><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></td>
+    <td>{{ product.price }}</td>
+    <td>{{ product.created_at }}</td>
+  </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
